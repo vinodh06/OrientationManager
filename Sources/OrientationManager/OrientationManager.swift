@@ -2,14 +2,14 @@ import SwiftUI
 import Combine
 
 public class OrientationManager: ObservableObject {
-    @Published var type = OrientationManager.getOrientation
+    @Published public var type: UIDeviceOrientation = UIDevice.current.orientation
     private var cancellables: Set<AnyCancellable> = []
 
     public init() {
     }
 
     // Get the current device orientation
-    public static var getOrientation: UIDeviceOrientation {
+    public var getOrientation: UIDeviceOrientation {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene else {
             return UIDevice.current.orientation
@@ -33,11 +33,12 @@ public class OrientationManager: ObservableObject {
 
     // Subscribe to device orientation change notifications
     public func subscribeToNotifications() {
-        self.type = OrientationManager.getOrientation
+        self.type = self.getOrientation
         NotificationCenter.default
             .publisher(for: UIDevice.orientationDidChangeNotification)
             .sink { [weak self] _ in
-                self?.type = OrientationManager.getOrientation
+                guard let weakSelf = self else { return }
+                weakSelf.type = weakSelf.getOrientation
             }
             .store(in: &cancellables)
     }
@@ -52,7 +53,7 @@ public class OrientationManager: ObservableObject {
 }
 
 @propertyWrapper
-public struct Orientation: DynamicProperty {
+public struct Orientation {
     @StateObject var manager = OrientationManager()
 
     public var wrappedValue: UIDeviceOrientation {
