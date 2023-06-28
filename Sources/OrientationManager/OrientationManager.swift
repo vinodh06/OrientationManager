@@ -9,7 +9,7 @@ public class OrientationManager: ObservableObject {
     }
 
     // Get the current device orientation
-    static var getOrientation: UIDeviceOrientation {
+    public static var getOrientation: UIDeviceOrientation {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let sceneDelegate = scene as? UIWindowScene else {
             return UIDevice.current.orientation
