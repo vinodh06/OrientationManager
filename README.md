@@ -1,13 +1,13 @@
 # OrientationManager
 
-The OrientationManager library provides a convenient solution for handling device orientation changes in SwiftUI projects. It includes a class `OrientationManager` and a property wrapper `Orientation` that encapsulate the necessary functionality. This library simplifies the process of adapting the user interface based on the device orientation, making it easier for developers to create responsive and adaptive SwiftUI views.
+The OrientationManager library simplifies the handling of device orientation changes in SwiftUI projects. It offers a class `OrientationManager` and a property wrapper `Orientation` to streamline the process. With this library, developers can easily create responsive and adaptive SwiftUI views that adjust according to the device orientation.
 
 ## Features
 
-- Get the current device orientation on device rotation and design the SwiftUI view accordingly.
-- Subscribe to device orientation change notifications to receive updates when the orientation changes.
+- Retrieve the current device orientation on device rotation and design the SwiftUI view accordingly.
+- Subscribe to device orientation change notifications to receive updates whenever the orientation changes.
 - Unsubscribe from device orientation change notifications to stop receiving updates.
-- Apply the `OrientationModifier` view modifier to effortlessly integrate orientation changes into SwiftUI views.
+- Apply the `OrientationModifier` view modifier for seamless integration of orientation changes into SwiftUI views.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ The OrientationManager library provides a convenient solution for handling devic
 
 ## Installation
 
-You can integrate OrientationManager into your Xcode project using Swift Package Manager (SPM).
+Integrating OrientationManager into your Xcode project is straightforward with Swift Package Manager (SPM).
 
 1. Open your project in Xcode.
 2. Select your project in the Project Navigator.
@@ -29,10 +29,11 @@ You can integrate OrientationManager into your Xcode project using Swift Package
 
 ## Usage
 
+To incorporate orientation changes into your SwiftUI views, follow these steps:
 
-### Apply Orientation Modifier to a View.
+### Apply Orientation Modifier to a View
 
-The `OrientationModifier` is a SwiftUI view modifier that allows you to effortlessly integrate device orientation changes into your SwiftUI views. It takes an instance of the `Orientation` property wrapper as a parameter. 
+The `OrientationModifier` is a SwiftUI view modifier that seamlessly integrates device orientation changes into your SwiftUI views. Simply pass an instance of the `Orientation` property wrapper as a parameter.
 
 ```swift
 struct ContentView: View {
@@ -45,13 +46,13 @@ struct ContentView: View {
 }
 ```
 
-In the above example, the `Text` view will display the current device orientation using the `currentOrientation` property. The `orient(with:)` modifier ensures that the view is updated whenever the device orientation changes.
+In the example above, the `Text` view will display the current device orientation using the `currentOrientation` property. The `orient(with:)` modifier ensures that the view is automatically updated whenever the device orientation changes.
 
-Or if you want it customized version means you can use it like this
+Also you can use the customized version to get the current device orientation.
 
 ### Get the Current Device Orientation
 
-You can access the current device orientation using the `OrientationManager.getOrientation` static property. It returns a `UIDeviceOrientation` value representing the current device orientation.
+To access the current device orientation, utilize the `OrientationManager.getOrientation` static property. It returns a `UIDeviceOrientation` value representing the current device orientation.
 
 ```swift
 let currentOrientation = OrientationManager.getOrientation
@@ -59,7 +60,7 @@ let currentOrientation = OrientationManager.getOrientation
 
 ### Subscribe to Device Orientation Change Notifications
 
-To receive notifications when the device orientation changes, create an instance of `OrientationManager` and call the `subscribeToNotifications()` method. This will update the `type` property of `OrientationManager` whenever the orientation changes.
+To receive notifications when the device orientation changes, create an instance of `OrientationManager` and call the `subscribeToNotifications()` method. This keeps the `type` property of `OrientationManager` updated whenever the orientation changes.
 
 ```swift
 let orientationManager = OrientationManager()
@@ -74,9 +75,6 @@ To stop receiving notifications for device orientation changes, call the `unsubs
 orientationManager.unsubscribeToNotifications()
 ```
 
-
 ## Example Project
 
-To see OrientationManager in action, you can check out the [Example project](https://github.com/vinodh06/OrientationManager/tree/main/Example). It demonstrates the usage of OrientationManager and provides a sample SwiftUI View that adapts its user interface based on the device orientation.
-
-
+For a practical demonstration of OrientationManager and to explore its usage, refer to the [Example project](https://github.com/vinodh06/OrientationManager/tree/main/Example). It showcases how to integrate OrientationManager and provides a sample SwiftUI view that adapts its user interface based on the device orientation.
